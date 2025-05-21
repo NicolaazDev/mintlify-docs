@@ -7,7 +7,7 @@
     "light": "#edeffa",
     "dark": "#010208"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "https://res.cloudinary.com/do9d7j6b3/image/upload/v1747803532/favicon-16x16_dijb0c.png",
   "navigation": {
     "tabs": [
       
@@ -48,8 +48,8 @@
     }
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "https://res.cloudinary.com/do9d7j6b3/image/upload/v1747803591/20250521_0156_%C3%8Dcone_Moderno_OP_simple_compose_01jvrk568pfmzspwsfjbqs9tcn_vbfhmc.png",
+    "dark": "https://res.cloudinary.com/do9d7j6b3/image/upload/v1747803591/20250521_0156_%C3%8Dcone_Moderno_OP_simple_compose_01jvrk568pfmzspwsfjbqs9tcn_vbfhmc.png"
   },
   "navbar": {
     "links": [
