@@ -1,33 +1,89 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: 'Introdução'
+description: 'Documentação das APIs de Autenticação'
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
+## Bem-vindo à Documentação de API
 
-## Welcome
-
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+Esta seção apresenta a documentação completa das APIs de autenticação do sistema, incluindo endpoints para registro, login, recuperação de senha e autenticação de dois fatores.
 
 <Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
+  title="Sistema de Autenticação Completo"
+  icon="shield-check"
+  href="/api-reference/auth"
 >
-  View the OpenAPI specification file
+  Ver todos os endpoints de autenticação
 </Card>
 
-## Authentication
+## Autenticação
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+Todas as rotas protegidas da API são autenticadas usando tokens JWT (JSON Web Token). Os tokens devem ser incluídos no cabeçalho de requisição usando o formato Bearer.
 
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
+```bash
+Authorization: Bearer seu_token_jwt
+```
+
+## Recursos de Autenticação
+
+O sistema oferece diversos recursos avançados de segurança:
+
+### Registro e Verificação
+
+- Registro de usuários com validação de email via OTP
+- Verificação em duas etapas para ativação de contas
+
+### Login Seguro
+
+- Autenticação via email/senha
+- Autenticação em dois fatores (2FA) com aplicativo autenticador
+- Login social integrado com:
+  - Google
+  - Discord
+  - Facebook
+  - Steam
+  - Twitch
+
+### Recuperação de Conta
+
+- Sistema de recuperação de senha por email
+- Verificação de código OTP para reset de senha
+- Políticas de senha segura
+
+### Controle de Acesso
+
+- Sistema de permissões baseado em roles
+- Proteção de rotas por nível de acesso
+- Guardas personalizados para validação de permissões
+
+## Como Usar
+
+Todas as chamadas à API devem ser feitas com o Content-Type `application/json`. Para rotas autenticadas, inclua o token JWT no cabeçalho de autorização.
+
+Os exemplos abaixo mostram como utilizar os principais endpoints:
+
+```typescript
+// Exemplo de registro de usuário
+const response = await fetch('/api/auth/register', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    email: 'usuario@exemplo.com',
+    password: 'Senha@123',
+    name: 'Nome do Usuário'
+  })
+});
+
+// Exemplo de login
+const loginResponse = await fetch('/api/auth/login', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    email: 'usuario@exemplo.com',
+    password: 'Senha@123'
+  })
+});
 ```
